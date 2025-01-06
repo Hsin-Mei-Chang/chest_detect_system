@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chest Detect System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/disease.css') }}?v=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  </link>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  </link>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <!-- <script src="carousel.js"></script> -->
+</head>
+
+<body>
+  <header class="p-3 mb-3 border-bottom">
+    <div class="headAll">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a>
+        <div class="system"><a>胸腔辨識系統</a></div>
+        <ul class="drop-down-menu ">
+          <li><a class="nav-link dropdown-toggle show" href="{{ url_for('all.all') }}" data-bs-toggle="dropdown"
+              aria-expanded="true">病患總覽</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle show" href="{{ url_for('diseaseAll.diseaseAll') }}"
+              data-bs-toggle="dropdown" aria-expanded="true">疾病分類</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle show" href="{{ url_for('detect.detect') }}" data-bs-toggle="dropdown"
+              aria-expanded="true">疾病辨識</a>
+          </li>
+          <li><a class="nav-link dropdown-toggle show" href="{{ url_for('about.about') }}" data-bs-toggle="dropdown"
+              aria-expanded="true">醫院公告</a></li>
+        </ul>
+        <div class="message-logout">
+          {% if username %}
+          <div class="welcome-message">
+            <span>{{ username }}，您好！</span>
+          </div>
+          {% endif %}
+          <div class="logout">
+            <a href="{{ url_for('logout.logout') }}" class="btn btn-danger">登出</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="compare">
+      <div class="fixPic">
+        <img class="fixPicSample" src="{{ url_for('static', filename='assets/00028948_000.png') }}" />
+      </div>
+      <div class="x_rays_container">
+        {% if image_paths and image_paths|length > 0 %}
+          {% for path in image_paths %}
+          <div class="diseasePic">
+            <!-- 使用圖片路徑顯示圖片 -->
+            <img src="/{{ path }}" alt="disease image">
+          </div>
+          {% endfor %}
+        {% else %}
+          <p>尚無圖片資料。</p>
+        {% endif %}
+      </div>      
+    </div>
+  </main>
+  <footer class="py-5">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p id="foot">© 2024 Hsin-Mei Chang and Ting-Yu Ye, National Kaohsiung Normal University, Taiwan, Inc. All rights
+        reserved.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

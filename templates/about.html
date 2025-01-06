@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chest Detect System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="static/css/simple.css">
+</head>
+
+<body>
+  <header class="p-3 mb-3 border-bottom">
+    <div class="headAll">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a>
+        <div class="system"><a>胸腔辨識系統</a></div>
+        <ul class="drop-down-menu ">
+          <li><a class="nav-link dropdown-toggle show" href="{{ url_for('all.all') }}" data-bs-toggle="dropdown"
+              aria-expanded="true">病患總覽</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle show" href="{{ url_for('diseaseAll.diseaseAll') }}"
+              data-bs-toggle="dropdown" aria-expanded="true">疾病分類</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle show" href="{{ url_for('detect.detect') }}" data-bs-toggle="dropdown"
+              aria-expanded="true">疾病辨識</a>
+          </li>
+          <li><a class="nav-link dropdown-toggle show" href="{{ url_for('about.about') }}" data-bs-toggle="dropdown"
+              aria-expanded="true">醫院公告</a></li>
+        </ul>
+        <div class="message-logout">
+          {% if username %}
+          <div class="welcome-message">
+            <span>{{ username }}，您好！</span>
+          </div>
+          {% endif %}
+          <div class="logout">
+            <a href="{{ url_for('logout.logout') }}" class="btn btn-danger">登出</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <div class="carousel">
+      <div class="btnContainer">
+        <button class="btn btn-prev">&lang;</button>
+        <button class="btn btn-next">&rang;</button>
+      </div>
+      <div class="announcement-container">
+        <div class="content red"><img class="announcement-image-1" src="static/assets/1-15.png"></div>
+        <div class="content yellow"><img class="announcement-image-1" src="static/assets/about1.png"></div>
+        <div class="content blue"><img class="announcement-image-1" src="static/assets/about2.png"></div>
+        <div class="content purple">4</div>
+        <div class="content purple">5</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script type="text/javascript" src="static/script.js"></script>
+
+  <footer class="py-5">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p id="foot">© 2024 Hsin-Mei Chang and Ting-Yu Ye, National Kaohsiung Normal University, Taiwan, Inc. All rights
+        reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
